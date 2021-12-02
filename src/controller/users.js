@@ -90,7 +90,6 @@ const users = {
     register: async(req, res) =>{
         try {
             const { body } = req;
-            const passwordHash = bcrypt.hashSync(body.password, 10);
             // const pinHash = bcrypt.hashSync(body.pin, 10)
             const email = req.body.email;
             const cekEmail = await usersModels.findAll({
@@ -99,6 +98,7 @@ const users = {
                 },
             });
             if(cekEmail.length <= 0){
+                const passwordHash = bcrypt.hashSync(body.password, 10);
                 const register = await usersModels.create({
                     firstName: body.firstName,
                     lastName: body.lastName,

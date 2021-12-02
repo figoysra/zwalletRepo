@@ -136,6 +136,7 @@ const transaction = {
                 where: {
                     [Op.or] : [{sender: id}, {receiver: id}]
                 },
+                order: [['date', 'DESC']],
                 include: [
                     {model: usersModels, as: 'senderUsers'},
                     {model: usersModels, as: 'receiverUsers'}

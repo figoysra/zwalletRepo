@@ -14,8 +14,14 @@ const Transaction = db.define(
         type: {
             type: DataTypes.ENUM('Transfer', 'Top Up')
         },
+        date: {
+            type : 'TIMESTAMP',
+            defaultValue: Sequelize.literal('CURRENT TIMESTAMP'),
+            allowNull: false
+        },
         note:{
-            type: DataTypes.TEXT
+            type: DataTypes.TEXT,
+            allowNull: true
         },
         sender:{
             type: DataTypes.INTEGER,
